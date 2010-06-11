@@ -8,8 +8,19 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+;; for Emacs 22
+(when (version< emacs-version "23")
+  (transient-mark-mode 1)
+  (add-to-list 'load-path "~/.emacs.d/emacs22"))
+
+;; at work
+(when (search "suse" (version))
+  ;; color-theme is installed by hand, not via RPM
+  ;; add its location to load path
+  (add-to-list 'load-path "~/.emacs.d/color-theme"))
+
+
 ;; Color
-(add-to-list 'load-path "~/.emacs.d/color-theme")
 (require 'color-theme)
 
 (defun color-theme-dark-bliss ()
@@ -39,10 +50,6 @@
 
 (color-theme-dark-bliss)
 
-;; for Emacs 22
-(when (version< emacs-version "23")
-  (transient-mark-mode 1)
-  (add-to-list 'load-path "~/.emacs.d/emacs22"))
 
 (require 'whitespace)
 
@@ -98,7 +105,7 @@
 ;; Scala
 (add-to-list 'load-path "~/opt/misc/scala-tool-support/emacs")
 (require 'scala-mode-auto)
-(add-to-list 'load-path "~/checkouts/ensime/src/main/elisp")
+(add-to-list 'load-path "~/apps/ensime/elisp")
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
@@ -127,4 +134,3 @@
 
 ;; add hooks for every major mode you use
 (add-hook 'clojure-mode-hook (lambda () (whitespace-mode 1)))
-
