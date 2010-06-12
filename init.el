@@ -14,7 +14,7 @@
   (add-to-list 'load-path "~/.emacs.d/emacs22"))
 
 ;; at work
-(when (string-match-p "suse" (version))
+(when (string-match "suse" (version))
   ;; color-theme is installed by hand, not via RPM
   ;; add its location to load path
   (add-to-list 'load-path "~/.emacs.d/color-theme"))
