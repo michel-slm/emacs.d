@@ -17,7 +17,8 @@ if [ ! -d ac-slime ]; then
     git clone https://github.com/purcell/ac-slime.git
 fi
 
-
-emacs --script init-elpa.el
-emacs --script elpa-install.el
+if [ ! -d elpa ]; then
+    emacs --script init-elpa.el
+    emacs --script elpa-install.el
+fi
 popd
