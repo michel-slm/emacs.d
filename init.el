@@ -50,12 +50,6 @@
 
 (color-theme-dark-bliss)
 
-;; auto complete
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
-(ac-config-default)
-
 ;; auto complete for SLIME
 (add-to-list 'load-path "~/.emacs.d/ac-slime")
 (require 'ac-slime)
