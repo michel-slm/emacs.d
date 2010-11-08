@@ -2,20 +2,19 @@
 *~
 .#*
 \#*#
+session.*
 # Install these yourself
-# ELPA:
-#   http://tromey.com/elpa/install.html
-#   after this, M-x package-list-packages and install slime-mode
 # color-theme:
 #   http://www.nongnu.org/color-theme/
-# clojure-mode:
-#   http://github.com/technomancy/clojure-mode
 # ensime:
 #   http://github.com/aemoncannon/ensime/downloads
-# org-mode:
-#   http://orgmode.org/index.html#sec-3_2
+# auto-complete:
+#   http://cx4a.org/software/auto-complete/
+ac-slime
+auto-complete
 elpa
 color-theme*
+org-mode
 
 # Machine-local files
 *.dat

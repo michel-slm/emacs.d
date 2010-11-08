@@ -50,8 +50,16 @@
 
 (color-theme-dark-bliss)
 
+;; auto complete
+(add-to-list 'load-path "~/.emacs.d/auto-complete")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+(ac-config-default)
 
-(require 'whitespace)
+;; auto complete for SLIME
+(add-to-list 'load-path "~/.emacs.d/ac-slime")
+(require 'ac-slime)
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
 
 (defun org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
@@ -60,9 +68,6 @@
 
 (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
-;; Clojure
-(add-to-list 'load-path "~/checkouts/clojure-mode")
-(require 'clojure-mode)
 
 ;; http://www.mail-archive.com/clojure@googlegroups.com/msg28178.html
 ;; http://groups.google.com/group/swank-clojure/msg/2d77ad2909eef2e0
@@ -87,8 +92,9 @@
       (message "Starting swank server..."))))
 
 ;; Org-mode
-(add-to-list 'load-path "~/checkouts/org-mode/lisp")
-(add-to-list 'load-path "~/checkouts/org-mode/contrib/lisp")
+;; now bundled with Emacs but we want the latest version
+(add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
+(add-to-list 'load-path "~/.emacs.d/org-mode/contrib/lisp")
 (require 'org-install)
 
 ;; The following lines are always needed. Choose your own keys.
@@ -117,6 +123,9 @@
   ;; If there is more than one, they won't work right.
  '(delete-selection-mode nil)
  '(inhibit-startup-screen t)
+ '(org-mobile-directory "~/Desktop/mobile.org")
+ '(rpm-spec-user-full-name "Michel Salim")
+ '(rpm-spec-user-mail-address "salimma@fedoraproject.org")
  '(scroll-bar-mode (quote right)))
 
 (custom-set-faces
@@ -128,6 +137,8 @@
 
 ;; from http://technomancy.us/135
 ;; in which the maintainer's perspective is considered
+(require 'whitespace)
+
 (setq whitespace-style '(trailing lines space-before-tab
                                   indentation space-after-tab)
       whitespace-line-column 80)
