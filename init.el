@@ -20,6 +20,9 @@
   (add-to-list 'load-path "~/.emacs.d/color-theme"))
 
 
+;; clipboard copy
+(setq x-select-enable-clipboard t)
+
 ;; Color
 (require 'color-theme)
 
