@@ -65,6 +65,9 @@
 
 (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
+;;;;  Clojure
+;; syntax highlighting in REPL
+(add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
 
 ;; http://www.mail-archive.com/clojure@googlegroups.com/msg28178.html
 ;; http://groups.google.com/group/swank-clojure/msg/2d77ad2909eef2e0
