@@ -91,6 +91,9 @@
 			      (set-process-filter process nil))))
       (message "Starting swank server..."))))
 
+;; git-wip
+(load "~/checkouts/git-wip/emacs/git-wip.el")
+
 ;; Org-mode
 ;; now bundled with Emacs but we want the latest version
 (add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
