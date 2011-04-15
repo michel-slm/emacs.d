@@ -108,6 +108,18 @@
 
 (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
 
+;;;; also integrate with bibtex
+;;;; http://www.mfasold.net/blog/2009/02/using-emacs-org-mode-to-draft-papers/
+
+(defun org-mode-reftex-setup ()
+  (load-library "reftex")
+  (and (buffer-file-name)
+       (file-exists-p (buffer-file-name))
+       (reftex-parse-all))
+  (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
+  )
+(add-hook 'org-mode-hook 'org-mode-reftex-setup)
+
 ;; NXML
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . nxml-mode))
 
