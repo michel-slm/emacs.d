@@ -14,8 +14,8 @@ if [ ! -d ~/checkouts/git-wip ]; then
     popd
 fi
 
-if [ ! -d clojure-mode ]; then
-    git clone git://github.com/technomancy/clojure-mode.git
+if [ ! -d ac-slime ]; then
+    git clone https://github.com/purcell/ac-slime.git
 fi
 
 if [ ! -d org-mode ]; then
@@ -27,12 +27,12 @@ if [ ! -d org-mode ]; then
     popd
 fi
 
-if [ ! -d ac-slime ]; then
-    git clone https://github.com/purcell/ac-slime.git
+if [ ! -d pkg-el23 ]; then
+    mkdir pkg-el23
+    (cd pkg-el23 && wget -cN http://bit.ly/pkg-el23)
 fi
 
 if [ ! -d elpa ]; then
-    emacs --script init-elpa.el
-    emacs --script elpa-install.el
+    emacs --script pkg-install.el
 fi
 popd

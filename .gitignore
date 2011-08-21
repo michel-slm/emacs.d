@@ -16,6 +16,7 @@ clojure-mode
 elpa
 color-theme*
 org-mode
+pkg-el23
 
 # Machine-local files
 *.dat

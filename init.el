@@ -3,10 +3,13 @@
 ;;; interfacing with ELPA, the package archive.
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
+
+(if (version< emacs-version "24")
+  (add-to-list 'load-path "~/.emacs.d/pkg-el23"))
+(require 'package)
+(add-to-list 'package-archives
+	     '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
 
 ;; for Emacs 22
 (when (version< emacs-version "23")
