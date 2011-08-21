@@ -22,6 +22,8 @@
   ;; add its location to load path
   (add-to-list 'load-path "~/.emacs.d/color-theme"))
 
+;; Local packages
+(add-to-list 'load-path "~/.emacs.d/misc")
 
 ;; clipboard copy
 (setq x-select-enable-clipboard t)
@@ -150,3 +152,7 @@
 
 ;; add hooks for every major mode you use
 (add-hook 'clojure-mode-hook (lambda () (whitespace-mode 1)))
+
+;; XQuery
+(require 'xquery-mode)
+(add-to-list 'auto-mode-alist '("\\.xq\\'" . xquery-mode))
