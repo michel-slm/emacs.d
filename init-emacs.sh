@@ -14,6 +14,10 @@ if [ ! -d ~/checkouts/git-wip ]; then
     popd
 fi
 
+if [ ! -d clojure-mode ]; then
+    git clone git://github.com/technomancy/clojure-mode.git
+fi
+
 if [ ! -d org-mode ]; then
     git clone git://repo.or.cz/org-mode.git
     pushd org-mode

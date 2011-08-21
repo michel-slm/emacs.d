@@ -12,6 +12,7 @@ session.*
 #   http://cx4a.org/software/auto-complete/
 ac-slime
 auto-complete
+clojure-mode
 elpa
 color-theme*
 org-mode

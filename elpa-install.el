@@ -4,5 +4,4 @@
   (package-initialize))
 
 (package-menu-refresh)
-(package-install 'clojure-mode)
 (package-install 'slime-repl)

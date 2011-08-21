@@ -58,14 +58,10 @@
 (require 'ac-slime)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 
-(defun org-summary-todo (n-done n-not-done)
-  "Switch entry to DONE when all subentries are done, to TODO otherwise."
-  (let (org-log-done org-log-states)   ; turn off logging
-    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
-
-(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
-
 ;;;;  Clojure
+(add-to-list 'load-path "~/.emacs.d/clojure-mode")
+(require 'clojure-mode)
+
 ;; syntax highlighting in REPL
 (add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
 
@@ -73,23 +69,6 @@
 ;; http://groups.google.com/group/swank-clojure/msg/2d77ad2909eef2e0
 (require 'slime)
 (setq slime-protocol-version 'ignore)
-
-;; http://wiki.github.com/technomancy/leiningen/emacs-integration
-(when (version<= "23" emacs-version)
-  (defun lein-swank ()
-    (interactive)
-    (let ((root (locate-dominating-file default-directory "project.clj")))
-      (when (not root)
-	(error "Not in a Leiningen project."))
-      ;; you can customize slime-port using .dir-locals.el
-      (shell-command (format "cd %s && lein swank %s &" root slime-port)
-		     "*lein-swank*")
-      (set-process-filter (get-buffer-process "*lein-swank*")
-			  (lambda (process output)
-			    (when (string-match "Connection opened on" output)
-			      (slime-connect "localhost" slime-port)
-			      (set-process-filter process nil))))
-      (message "Starting swank server..."))))
 
 ;; git-wip
 (load "~/checkouts/git-wip/emacs/git-wip.el")
@@ -119,6 +98,14 @@
   (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
   )
 (add-hook 'org-mode-hook 'org-mode-reftex-setup)
+
+(defun org-summary-todo (n-done n-not-done)
+  "Switch entry to DONE when all subentries are done, to TODO otherwise."
+  (let (org-log-done org-log-states)   ; turn off logging
+    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+
+(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+
 
 ;; NXML
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . nxml-mode))
