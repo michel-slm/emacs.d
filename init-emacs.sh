@@ -14,6 +14,10 @@ if [ ! -d ~/checkouts/git-wip ]; then
     popd
 fi
 
+if [ ! -x ~/.lein/bin/swank-clojure ]; then
+    lein plugin install swank-clojure 1.3.2
+fi
+
 if [ ! -d ac-slime ]; then
     git clone https://github.com/purcell/ac-slime.git
 fi
