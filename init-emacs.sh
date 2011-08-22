@@ -1,7 +1,13 @@
 #!/bin/sh
 pushd $(dirname $0)
-if [ -f /etc/fedora-release ] && (! (rpm -q emacs-color-theme > /dev/null)); then
-    sudo yum install emacs-color-theme
+if [ -f /etc/fedora-release ]; then
+    if [ ! (rpm -q emacs-auto-complete > /dev/null) ]; then
+        sudo yum install emacs-auto-complete
+    fi
+
+    if [ ! (rpm -q emacs-color-theme > /dev/null) ]; then
+        sudo yum install emacs-color-theme
+    fi
 fi
 
 if [ ! -d ~/checkouts ]; then
