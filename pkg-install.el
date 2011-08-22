@@ -5,5 +5,6 @@
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-refresh-contents)
 (package-install 'clojure-mode)
+(package-install 'paredit)
 (package-install 'slime)
 ;(package-install 'slime-clj)

@@ -1,9 +1,3 @@
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-
 (if (version< emacs-version "24")
   (add-to-list 'load-path "~/.emacs.d/pkg-el23"))
 (require 'package)
@@ -78,6 +72,11 @@
 ;; git-wip
 (load "~/checkouts/git-wip/emacs/git-wip.el")
 
+
+;; NXML
+(add-to-list 'auto-mode-alist '("\\.xml\\'" . nxml-mode))
+
+
 ;; Org-mode
 ;; now bundled with Emacs but we want the latest version
 (add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
@@ -112,8 +111,10 @@
 (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
 
-;; NXML
-(add-to-list 'auto-mode-alist '("\\.xml\\'" . nxml-mode))
+;; require or autoload paredit-mode
+(defun turn-on-paredit () (paredit-mode 1))
+(add-hook 'clojure-mode-hook 'turn-on-paredit)
+
 
 ;; Scala
 (add-to-list 'load-path "~/opt/misc/scala-tool-support/emacs")
