@@ -58,7 +58,6 @@
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 
 ;;;;  Clojure
-(add-to-list 'load-path "~/.emacs.d/clojure-mode")
 (require 'clojure-mode)
 
 ;; syntax highlighting in REPL
