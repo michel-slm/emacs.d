@@ -68,15 +68,18 @@
 (require 'slime)
 (setq slime-protocol-version 'ignore)
 
-;; git-wip
+;;; CoffeeScript
+(add-to-list 'load-path "~/.emacs.d/coffee-mode")
+(require 'coffee-mode)
+
+;;; git-wip
 (load "~/checkouts/git-wip/emacs/git-wip.el")
 
-
-;; NXML
+;;; NXML
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . nxml-mode))
 
 
-;; Org-mode
+;;; Org-mode
 ;; now bundled with Emacs but we want the latest version
 (add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/org-mode/contrib/lisp")

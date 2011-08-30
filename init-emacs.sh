@@ -28,6 +28,10 @@ if [ ! -d ac-slime ]; then
     git clone https://github.com/purcell/ac-slime.git
 fi
 
+if [ ! -d coffee-mode ]; then
+    git clone git://github.com/defunkt/coffee-mode.git
+fi
+
 if [ ! -d org-mode ]; then
     git clone git://repo.or.cz/org-mode.git
     pushd org-mode

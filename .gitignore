@@ -13,6 +13,7 @@ session.*
 ac-slime
 auto-complete
 clojure-mode
+coffee-mode
 elpa
 color-theme*
 org-mode
