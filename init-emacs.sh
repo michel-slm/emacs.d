@@ -1,11 +1,11 @@
 #!/bin/sh
 pushd $(dirname $0)
 if [ -f /etc/fedora-release ]; then
-    if [ ! $(rpm -q emacs-auto-complete) >/dev/null 2>&1 ]; then
+    if [ ! $(rpm -q emacs-auto-complete >/dev/null 2>&1) ]; then
         sudo yum install emacs-auto-complete
     fi
 
-    if [ ! $(rpm -q emacs-color-theme) >/dev/null 2>&1 ]; then
+    if [ ! $(rpm -q emacs-color-theme >/dev/null 2>&1) ]; then
         sudo yum install emacs-color-theme
     fi
 fi
