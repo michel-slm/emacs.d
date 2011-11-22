@@ -4,7 +4,9 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-refresh-contents)
+(package-install 'auto-complete)
 (package-install 'clojure-mode)
+(package-install 'color-theme)
 (package-install 'graphviz-dot-mode)
 (package-install 'paredit)
 (package-install 'slime)
