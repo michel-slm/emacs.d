@@ -119,8 +119,8 @@
 
 
 ;; Scala
-(add-to-list 'load-path "~/opt/misc/scala-tool-support/emacs")
-(require 'scala-mode-auto)
+; (add-to-list 'load-path "~/opt/misc/scala-tool-support/emacs")
+; (require 'scala-mode-auto)
 (add-to-list 'load-path "~/apps/ensime/elisp")
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)

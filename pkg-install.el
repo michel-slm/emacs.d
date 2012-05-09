@@ -9,5 +9,6 @@
 (package-install 'color-theme)
 (package-install 'graphviz-dot-mode)
 (package-install 'paredit)
+(package-install 'scala-mode)
 (package-install 'slime)
 ;(package-install 'slime-clj)
