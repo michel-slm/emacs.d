@@ -34,7 +34,7 @@ fi
 
 if [ ! -d pkg-el23 ]; then
     mkdir pkg-el23
-    (cd pkg-el23 && wget -cN http://bit.ly/pkg-el23)
+    (cd pkg-el23 && wget -cN http://bit.ly/pkg-el23 && mv pkg-el23 package.el)
 fi
 
 if [ ! -d elpa ]; then
