@@ -75,6 +75,9 @@
 ;;; git-wip
 (load "~/checkouts/git-wip/emacs/git-wip.el")
 
+;;; Markdown
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
 ;;; NXML
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . nxml-mode))
 

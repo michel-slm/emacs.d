@@ -10,6 +10,7 @@
 (package-install 'go-mode)
 (package-install 'graphviz-dot-mode)
 (package-install 'haskell-mode)
+(package-install 'markdown-mode)
 (package-install 'paredit)
 (package-install 'scala-mode)
 (package-install 'slime)
