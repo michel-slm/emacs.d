@@ -3,15 +3,24 @@
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
 (package-refresh-contents)
-(package-install 'auto-complete)
-(package-install 'clojure-mode)
-(package-install 'color-theme)
-(package-install 'go-mode)
-(package-install 'graphviz-dot-mode)
-(package-install 'haskell-mode)
-(package-install 'markdown-mode)
-(package-install 'paredit)
-(package-install 'scala-mode)
-(package-install 'slime)
-;(package-install 'slime-clj)
+
+(setq pkg-list
+      '(
+	auto-complete
+	clojure-mode
+	color-theme
+	go-mode
+	graphviz-dot-mode
+	haskell-mode
+	markdown-mode
+	paredit
+	scala-mode
+	slime
+	;slime-clj
+	))
+
+(dolist (pkg pkg-list)
+  (when (not (package-installed-p pkg))
+    (package-install pkg)))
