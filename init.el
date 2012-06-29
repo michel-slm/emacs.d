@@ -23,8 +23,6 @@
 (setq x-select-enable-clipboard t)
 
 ;; Color
-(require 'color-theme)
-
 (defun color-theme-dark-bliss ()
   ""
   (interactive)
@@ -50,7 +48,11 @@
      (font-lock-preprocessor-face ((t (:foreground "#aaffee"))))
      (font-lock-string-face ((t (:foreground "#bbbbff")))))))
 
-(color-theme-dark-bliss)
+(if (version< emacs-version "24")
+    (begin
+     (require 'color-theme)
+     (color-theme-dark-bliss))
+    (load-theme 'deeper-blue t))
 
 ;; auto complete for SLIME
 (add-to-list 'load-path "~/.emacs.d/ac-slime")
@@ -121,12 +123,24 @@
 (add-hook 'clojure-mode-hook 'turn-on-paredit)
 
 
+;; rainbow-mode
+;; from https://github.com/purcell/emacs.d/blob/master/init-css.el
+(autoload 'rainbow-turn-on "rainbow-mode"
+  "Enable rainbow mode color literal overlays")
+(dolist (hook '(css-mode-hook
+		emacs-lisp-mode-hook
+		html-mode-hook
+		sass-mode-hook))
+  (add-hook hook 'rainbow-turn-on))
+
+
 ;; Scala
 ; (add-to-list 'load-path "~/opt/misc/scala-tool-support/emacs")
 ; (require 'scala-mode-auto)
-(add-to-list 'load-path "~/apps/ensime/elisp")
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(when (file-exists-p "~/apps/ensime/elisp")
+  (add-to-list 'load-path "~/apps/ensime/elisp")
+  (require 'ensime)
+  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
 
 
 (custom-set-variables

@@ -10,16 +10,19 @@
       '(
 	auto-complete
 	clojure-mode
-	color-theme
 	go-mode
 	graphviz-dot-mode
 	haskell-mode
 	markdown-mode
 	paredit
+	rainbow-mode
 	scala-mode
 	slime
 	;slime-clj
 	))
+
+(when (version< emacs-version "24")
+  (add-to-list 'pkg-list 'color-theme))
 
 (dolist (pkg pkg-list)
   (when (not (package-installed-p pkg))
