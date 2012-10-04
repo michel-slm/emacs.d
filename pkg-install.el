@@ -16,6 +16,7 @@
 	markdown-mode
 	paredit
 	rainbow-mode
+	rspec-mode
 	scala-mode
 	slime
 	;slime-clj
