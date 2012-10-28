@@ -10,6 +10,7 @@
       '(
 	auto-complete
 	clojure-mode
+	feature-mode
 	go-mode
 	graphviz-dot-mode
 	haskell-mode
