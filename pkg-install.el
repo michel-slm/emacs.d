@@ -1,29 +1,28 @@
-(when (version< emacs-version "24")
-  (add-to-list 'load-path "~/.emacs.d/pkg-el23"))
 (require 'package)
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+             '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 (package-refresh-contents)
 
 (setq pkg-list
       '(
-	auto-complete
-	clojure-mode
-	feature-mode
-	go-mode
-	graphviz-dot-mode
-	haskell-mode
-	markdown-mode
-	paredit
-	rainbow-mode
-	rspec-mode
-	scala-mode
-	slime
-	;slime-clj
-	))
+        auto-complete
+        cider
+        feature-mode
+        go-mode
+        graphviz-dot-mode
+        haskell-mode
+        markdown-mode
+        paredit
+        rainbow-mode
+        ;rspec-mode
+        ;scala-mode
+        ))
 
-(when (version< emacs-version "24")
+(when (< emacs-major-version 24)
   (add-to-list 'pkg-list 'color-theme))
 
 (dolist (pkg pkg-list)

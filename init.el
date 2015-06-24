@@ -1,20 +1,10 @@
-(if (version< emacs-version "24")
-  (add-to-list 'load-path "~/.emacs.d/pkg-el23"))
 (require 'package)
 (add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/"))
+             '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
-
-;; for Emacs 22
-(when (version< emacs-version "23")
-  (transient-mark-mode 1)
-  (add-to-list 'load-path "~/.emacs.d/emacs22"))
-
-;; at work
-(when (string-match "suse" (version))
-  ;; color-theme is installed by hand, not via RPM
-  ;; add its location to load path
-  (add-to-list 'load-path "~/.emacs.d/color-theme"))
 
 ;; Local packages
 (add-to-list 'load-path "~/.emacs.d/misc")
@@ -54,28 +44,14 @@
      (color-theme-dark-bliss))
     (load-theme 'deeper-blue t))
 
-;; auto complete for SLIME
-(add-to-list 'load-path "~/.emacs.d/ac-slime")
-(require 'ac-slime)
-(add-hook 'slime-mode-hook 'set-up-slime-ac)
-
 ;;;;  Clojure
-(require 'clojure-mode)
-
-;; syntax highlighting in REPL
-(add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
-
-;; http://www.mail-archive.com/clojure@googlegroups.com/msg28178.html
-;; http://groups.google.com/group/swank-clojure/msg/2d77ad2909eef2e0
-(require 'slime)
-(setq slime-protocol-version 'ignore)
 
 ;;; CoffeeScript
-(add-to-list 'load-path "~/.emacs.d/coffee-mode")
-(require 'coffee-mode)
+;(add-to-list 'load-path "~/.emacs.d/coffee-mode")
+;(require 'coffee-mode)
 
 ;;; git-wip
-(load "~/checkouts/git-wip/emacs/git-wip.el")
+;(load "~/checkouts/git-wip/emacs/git-wip.el")
 
 ;;; Markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
