@@ -9,6 +9,8 @@
 
 (setq pkg-list
       '(
+        ansible
+        ansible-doc
         auto-complete
         cider
         feature-mode
@@ -20,6 +22,7 @@
         rainbow-mode
         ;rspec-mode
         ;scala-mode
+        yaml-mode
         ))
 
 (when (< emacs-major-version 24)
