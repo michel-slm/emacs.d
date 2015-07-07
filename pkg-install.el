@@ -1,6 +1,6 @@
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/"))
+             '("stable" . "http://melpa.org/packages/"))
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -14,13 +14,20 @@
         auto-complete
         cider
         feature-mode
+        flycheck-clojure
+        flycheck-haskell
+        flycheck-pyflakes
+        flycheck-rust
         go-mode
+        gradle-mode
         graphviz-dot-mode
+        groovy-mode
         haskell-mode
         markdown-mode
         paredit
         rainbow-mode
         ;rspec-mode
+        rust-mode
         ;scala-mode
         yaml-mode
         ))

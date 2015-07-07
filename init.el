@@ -1,6 +1,6 @@
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/"))
+             '("melpa" . "http://melpa.org/packages/"))
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -49,6 +49,9 @@
 ;;; CoffeeScript
 ;(add-to-list 'load-path "~/.emacs.d/coffee-mode")
 ;(require 'coffee-mode)
+
+;;; Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;;; git-wip
 ;(load "~/checkouts/git-wip/emacs/git-wip.el")
@@ -104,9 +107,9 @@
 (autoload 'rainbow-turn-on "rainbow-mode"
   "Enable rainbow mode color literal overlays")
 (dolist (hook '(css-mode-hook
-		emacs-lisp-mode-hook
-		html-mode-hook
-		sass-mode-hook))
+                emacs-lisp-mode-hook
+                html-mode-hook
+                sass-mode-hook))
   (add-hook hook 'rainbow-turn-on))
 
 
