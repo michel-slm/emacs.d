@@ -1,4 +1,13 @@
+;;; init.el --- Emacs initialization
+
+;;; Commentary:
+;;
+
+(provide 'init)
 (require 'package)
+
+;;; Code:
+
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/"))
 (when (< emacs-major-version 24)
@@ -12,9 +21,9 @@
 ;; clipboard copy
 (setq x-select-enable-clipboard t)
 
-;; Color
+;;; Color
 (defun color-theme-dark-bliss ()
-  ""
+  "Dark Bliss theme."
   (interactive)
   (color-theme-install
    '(color-theme-dark-bliss
@@ -44,7 +53,22 @@
      (color-theme-dark-bliss))
     (load-theme 'deeper-blue t))
 
-;;;;  Clojure
+;;;  Clojure
+(defun turn-on-paredit ()
+  "Require or autoload paredit-mode."
+  (paredit-mode 1))
+(add-hook 'clojure-mode-hook 'turn-on-paredit)
+
+;; from http://technomancy.us/135
+;; in which the maintainer's perspective is considered
+(require 'whitespace)
+
+(setq whitespace-style '(trailing lines space-before-tab
+                                  indentation space-after-tab)
+      whitespace-line-column 80)
+
+;; add hooks for every major mode you use
+(add-hook 'clojure-mode-hook (lambda () (whitespace-mode 1)))
 
 ;;; CoffeeScript
 ;(add-to-list 'load-path "~/.emacs.d/coffee-mode")
@@ -77,32 +101,13 @@
 
 (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
 
-;;;; also integrate with bibtex
-;;;; http://www.mfasold.net/blog/2009/02/using-emacs-org-mode-to-draft-papers/
+;;; Python
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (require 'sphinx-doc)
+	    (sphinx-doc-mode t)))
 
-(defun org-mode-reftex-setup ()
-  (load-library "reftex")
-  (and (buffer-file-name)
-       (file-exists-p (buffer-file-name))
-       (reftex-parse-all))
-  (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
-  )
-(add-hook 'org-mode-hook 'org-mode-reftex-setup)
-
-(defun org-summary-todo (n-done n-not-done)
-  "Switch entry to DONE when all subentries are done, to TODO otherwise."
-  (let (org-log-done org-log-states)   ; turn off logging
-    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
-
-(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
-
-
-;; require or autoload paredit-mode
-(defun turn-on-paredit () (paredit-mode 1))
-(add-hook 'clojure-mode-hook 'turn-on-paredit)
-
-
-;; rainbow-mode
+;;; rainbow-mode
 ;; from https://github.com/purcell/emacs.d/blob/master/init-css.el
 (autoload 'rainbow-turn-on "rainbow-mode"
   "Enable rainbow mode color literal overlays")
@@ -113,7 +118,7 @@
   (add-hook hook 'rainbow-turn-on))
 
 
-;; Scala
+;;; Scala
 ; (add-to-list 'load-path "~/opt/misc/scala-tool-support/emacs")
 ; (require 'scala-mode-auto)
 (when (file-exists-p "~/apps/ensime/elisp")
@@ -141,17 +146,8 @@
   ;; If there is more than one, they won't work right.
  )
 
-;; from http://technomancy.us/135
-;; in which the maintainer's perspective is considered
-(require 'whitespace)
+;;; XQuery
+;; (require 'xquery-mode)
+;; (add-to-list 'auto-mode-alist '("\\.xq\\'" . xquery-mode))
 
-(setq whitespace-style '(trailing lines space-before-tab
-                                  indentation space-after-tab)
-      whitespace-line-column 80)
-
-;; add hooks for every major mode you use
-(add-hook 'clojure-mode-hook (lambda () (whitespace-mode 1)))
-
-;; XQuery
-(require 'xquery-mode)
-(add-to-list 'auto-mode-alist '("\\.xq\\'" . xquery-mode))
+;;; init.el ends here

@@ -1,4 +1,12 @@
+;;; pkg-install.el --- installs add-on packages
+
+;;; Commentary:
+;; 
+
 (require 'package)
+
+;;; Code:
+
 (add-to-list 'package-archives
              '("stable" . "http://melpa.org/packages/"))
 (when (< emacs-major-version 24)
@@ -7,6 +15,7 @@
 (package-initialize)
 (package-refresh-contents)
 
+(defvar pkg-list)
 (setq pkg-list
       '(
         ansible
@@ -23,12 +32,13 @@
         graphviz-dot-mode
         groovy-mode
         haskell-mode
+	lorem-ipsum
+	lua-mode
         markdown-mode
         paredit
         rainbow-mode
-        ;rspec-mode
         rust-mode
-        ;scala-mode
+	sphinx-doc
         yaml-mode
         ))
 
@@ -38,3 +48,7 @@
 (dolist (pkg pkg-list)
   (when (not (package-installed-p pkg))
     (package-install pkg)))
+
+(provide 'pkg-install)
+
+;;; pkg-install.el ends here
