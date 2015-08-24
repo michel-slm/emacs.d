@@ -35,6 +35,7 @@
         lorem-ipsum
         lua-mode
         markdown-mode
+	nginx-mode
         paredit
         rainbow-mode
         rust-mode
