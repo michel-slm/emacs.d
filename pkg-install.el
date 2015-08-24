@@ -32,13 +32,13 @@
         graphviz-dot-mode
         groovy-mode
         haskell-mode
-	lorem-ipsum
-	lua-mode
+        lorem-ipsum
+        lua-mode
         markdown-mode
         paredit
         rainbow-mode
         rust-mode
-	sphinx-doc
+        sphinx-doc
         yaml-mode
         ))
 
