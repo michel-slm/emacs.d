@@ -22,6 +22,7 @@
         ansible-doc
         auto-complete
         cider
+        color-theme-solarized
         feature-mode
         flycheck-clojure
         flycheck-haskell
