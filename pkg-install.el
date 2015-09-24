@@ -35,8 +35,9 @@
         lorem-ipsum
         lua-mode
         markdown-mode
-	nginx-mode
+        nginx-mode
         paredit
+        powerline
         rainbow-mode
         rust-mode
         sphinx-doc

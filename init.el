@@ -101,6 +101,9 @@
 
 (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
 
+;;; Powerline
+(powerline-center-theme)
+
 ;;; Python
 (add-hook 'python-mode-hook
 	  (lambda ()
