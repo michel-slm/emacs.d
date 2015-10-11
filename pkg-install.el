@@ -8,7 +8,9 @@
 ;;; Code:
 
 (add-to-list 'package-archives
-             '("stable" . "http://melpa.org/packages/"))
+             '("elpy" . "https://jorgenschaefer.github.io/packages/")
+             '("melpa" . "http://melpa.org/packages/")
+             )
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -23,6 +25,7 @@
         auto-complete
         cider
         color-theme-solarized
+        elpy
         feature-mode
         flycheck-clojure
         flycheck-haskell

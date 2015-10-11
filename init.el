@@ -9,7 +9,9 @@
 ;;; Code:
 
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/"))
+             '("elpy" . "https://jorgenschaefer.github.io/packages/")
+             '("melpa" . "http://melpa.org/packages/")
+             )
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -78,9 +80,10 @@
 
 ;;; Python
 (add-hook 'python-mode-hook
-	  (lambda ()
-	    (require 'sphinx-doc)
-	    (sphinx-doc-mode t)))
+          (lambda ()
+            (elpy-enable)
+            (require 'sphinx-doc)
+            (sphinx-doc-mode t)))
 
 ;;; rainbow-mode
 ;; from https://github.com/purcell/emacs.d/blob/master/init-css.el
