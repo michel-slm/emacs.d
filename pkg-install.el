@@ -41,6 +41,7 @@
         markdown-mode
         nginx-mode
         paredit
+        php-mode
         powerline
         rainbow-mode
         rust-mode
