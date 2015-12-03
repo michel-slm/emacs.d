@@ -23,6 +23,7 @@
         ansible
         ansible-doc
         auto-complete
+        cargo
         cider
         color-theme-solarized
         elpy
