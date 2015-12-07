@@ -112,6 +112,7 @@
  ;; If there is more than one, they won't work right.
  '(delete-selection-mode nil)
  '(inhibit-startup-screen t)
+ '(js-indent-level 2)
  '(org-mobile-directory "~/Desktop/mobile.org")
  '(rpm-spec-user-full-name "Michel Salim")
  '(rpm-spec-user-mail-address "salimma@fedoraproject.org")
